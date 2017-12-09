@@ -84,6 +84,14 @@ describe("module.runMain hook", function () {
       })
   )
 
+  xit("should support import from required CJS", () =>
+    // This passes w/ ./fixture/import/dynamic-import.js
+    runMain("./fixture/import/dynamic-import-indirect.js")
+      .then((result) => {
+        assert.equal(result.stdout, '{"value":"const"}')
+      })
+  )
+
   it("should not set `process.mainModule`", () =>
     runMain("./fixture/main/main-module.mjs")
       .then((result) => assert.ok(result.stdout.includes("main-module:false")))

@@ -1,0 +1,1 @@
+require("./dynamic-import.js")
